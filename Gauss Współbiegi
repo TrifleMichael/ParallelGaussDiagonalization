@@ -1,0 +1,54 @@
+W[i,j,k] ~ odjęcie od elementu A[i, k] elementu A[j, k], pomnożonego przez A[i,j]/A[j,j]
+n ~ liczba wierszy (kolumn jest o 1 więcej)
+
+Operacje są zależne jeśli:
+
+W[i, j, k] - modyfikuje A[i, k], korzysta z A[j, k], A[i, j], A[j, j]
+    |
+    v
+W[i1, j1, k1] jest zależne od W[i2, j2, k2] jeśli:
+
+A[i2, k2] = (A[j1, k1] lub A[i1, j1] lub A[j1, j1])
+lub
+A[i1, k1] = (A[j2, k2] lub A[i2, j2] lub A[j2, j2])
+
+
+
+
+W pozostałych przypadkach niezależne
+
+Alfabet to:
+W[x, y, z] gdzie x != y
+
+Słowo to:
+W[1, 0], W[2, 0], ..., W[n, 0], ~ zerowanie pierwszej kolumny
+W[2, 1], W[3, 1], ..., W[n, 1], ~ zerowanie drugiej kolumny
+... ,
+W[n, n-1], ~ zerowanie ostatniej kolumny
+
+W[n-1, n], W[n-2, n], ..., W[0, n], ~ diagonalizacja przedostatniej kolumny
+W[n-2, n-1], W[n-3, n-1], ..., W[0, n-1],
+... ,
+W[0, 1] ~ diagonalizacja 
+
+
+W ramach W[x, y] robimy W[x, y, 0], W[x, y, 1], ..., W[x, y, n+1]
+
+-------------------------
+
+import threading
+
+def test(s, s2):
+    print(s)
+    print(s2)
+
+
+x = threading.Thread(target=test, args=("Ugabugoa", "Auuuga"))
+x.start()
+x.join()
+
+-------------------------
+
+Pytania:
+
+Czy trzeba tworzyć osobne wątki do odejmowania każdego elementu?
